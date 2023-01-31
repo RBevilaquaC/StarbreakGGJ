@@ -31,6 +31,6 @@ public class PlayerMoviment : MonoBehaviour
 
     private void Move()
     {
-        rb.velocity = dirToMove.normalized;
+        rb.velocity = dirToMove.normalized * PlayerStatus.status.GetMovimentSpeed();
     }
 }
