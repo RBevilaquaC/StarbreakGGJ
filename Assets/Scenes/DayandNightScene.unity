@@ -534,7 +534,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0.512
+  weight: 0.491
   sharedProfile: {fileID: 11400000, guid: 49e72c9f41aa93d4691d76d90f743154, type: 2}
 --- !u!4 &476926697
 Transform:
@@ -608,7 +608,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.990566, g: 0.79130834, b: 0, a: 1}
   m_FlipX: 0
@@ -628,7 +628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566730528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27, y: -2.24, z: 0}
+  m_LocalPosition: {x: 0.73, y: -2.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -646,7 +646,6 @@ GameObject:
   - component: {fileID: 572423561}
   - component: {fileID: 572423564}
   - component: {fileID: 572423563}
-  - component: {fileID: 572423562}
   m_Layer: 5
   m_Name: Clock
   m_TagString: Untagged
@@ -676,22 +675,6 @@ RectTransform:
   m_AnchoredPosition: {x: -327, y: 175}
   m_SizeDelta: {x: 67.4234, y: 60.1842}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &572423562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572423560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b450017b62de57b4fa971c1e7d0be224, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clockHourHandTransform: {fileID: 1643229850}
-  clockMinuteHandTransform: {fileID: 139860189}
-  timeText: {fileID: 0}
-  day: 0
 --- !u!114 &572423563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,7 +722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1057368284}
-  - component: {fileID: 1057368283}
+  - component: {fileID: 1057368285}
   m_Layer: 0
   m_Name: TimerManager
   m_TagString: Untagged
@@ -747,18 +730,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1057368283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057368282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88cec041bb1072d42a4d7bc5d1da8d78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1057368284
 Transform:
   m_ObjectHideFlags: 0
@@ -774,6 +745,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1057368285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057368282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0722af1d3d6a5324c851c35567179d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClockHand: {fileID: 1643229850}
+  morningDuration: 30
+  dayDuration: 60
+  nightVolume: {fileID: 476926696}
 --- !u!1 &1296995579
 GameObject:
   m_ObjectHideFlags: 0
