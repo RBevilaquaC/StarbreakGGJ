@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class FieldView : MonoBehaviour
 {
+    /*
     private void Start()
     {
         Mesh mesh = new Mesh();
@@ -47,24 +48,38 @@ public class FieldView : MonoBehaviour
             angle -= angleIncrease;
         }
 
-        /*
-        vertices[0] = Vector3.zero;
-        vertices[1] = new Vector3(50,0);
-        vertices[2] = new Vector3(0,-50);
-
-        triangles[0] = 0;
-        triangles[1] = 1;
-        triangles[2] = 2; 
-        */
-
         mesh.vertices = vertices;
         mesh.uv = uv;
         mesh.triangles = triangles;
+    }*/
+
+    #region Parameters
+
+    public float viewRadius;
+    [Range(1,360)]
+    public float viewAngle;
+    public LayerMask targetLayer;
+    public LayerMask obstructionLayer;
+    public GameObject playerRef;
+    public bool CanSeePlayer { get; private set; }
+
+    #endregion
+
+    private void Start()
+    {
+        playerRef = PlayerStatus.playerObj;
     }
+    
+    
 
     private Vector3 GetVectorFromAngle(float angle)
     {
         float angleRad = angle * (Mathf.PI / 180f);
         return new Vector3(Mathf.Cos(angleRad),Mathf.Sin(angleRad));
+    }
+
+    private Vector3 DirFromAngle(float angleInDegree)
+    {
+        return new Vector3(Mathf.Sin(angleInDegree * Mathf.Deg2Rad),Mathf.Cos(angleInDegree * Mathf.Deg2Rad),0);
     }
 }
