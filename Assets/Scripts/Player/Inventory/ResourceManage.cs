@@ -15,39 +15,45 @@ public class ResourceManage : MonoBehaviour
 
     [SerializeField] private Sprite woodSprite;
     [SerializeField] private Sprite stoneSprite;
+    [SerializeField] private Canvas canvas;
+
+    public static ResourceManage resourceManage;
 
     #endregion
 
     private void Start()
     {
+        resourceManage = this;
         slotsResource = new SlotResource[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
             slotsResource[i] = transform.GetChild(i).GetComponent<SlotResource>();
-
     }
 
     private void Update()
     {
-        if(Input.GetButtonDown("Fire1")) AddResource(1,20);
+        //if(Input.GetButtonDown("Fire1")) AddResource(1,20);
+        //if(Input.GetButtonDown("Fire2")) AddResource(2,20);
+        if (Input.GetButtonDown("InventoryKey")) canvas.sortingLayerName = "UI";
     }
 
-    public void AddResource(int type, int AmountResource)
+    public void AddResource(int type, int amountResource, Resource stackResource)
     {
         bool canStorage = false;
+        stackResource.SetActiveObj(false);
         for (int i = 0; i < slotsResource.Length; i++)
         {
             if (slotsResource[i].type == type && !slotsResource[i].fullStack)
             {
                 canStorage = true;
-                slotsResource[i].CurrentResource += AmountResource;
+                slotsResource[i].CurrentResource += amountResource;
                 slotsResource[i].UpdateUI();
                 if (slotsResource[i].CurrentResource > maxResource)
                 {
                     int remainResource = slotsResource[i].CurrentResource - maxResource;
                     slotsResource[i].CurrentResource = maxResource;
+                    slotsResource[i].fullStack = true;
                     slotsResource[i].UpdateUI();
-                    print(remainResource);
-                    //AddResource(type,remainResource);
+                    AddResource(type,remainResource,stackResource);
                 }
                 break;
             }
@@ -56,7 +62,7 @@ public class ResourceManage : MonoBehaviour
                 canStorage = true;
                 slotsResource[i].haveResource = true;
                 slotsResource[i].type = type;
-                slotsResource[i].CurrentResource += AmountResource;
+                slotsResource[i].CurrentResource += amountResource;
                 slotsResource[i].UpdateUI();
                 switch (type)
                 {
@@ -71,13 +77,24 @@ public class ResourceManage : MonoBehaviour
                 {
                     int remainResource = slotsResource[i].CurrentResource - maxResource;
                     slotsResource[i].CurrentResource = maxResource;
+                    slotsResource[i].fullStack = true;
                     slotsResource[i].UpdateUI();
-                    print(remainResource);
-                    //AddResource(type,remainResource);
+                    AddResource(type,remainResource,stackResource);
                 }
                 break;
             }
         }
-        
+
+        if (!canStorage)
+        {
+            stackResource.SetActiveObj(true);
+            stackResource.amount = amountResource;
+            stackResource.UpdateUI();
+        }
+    }
+
+    public void CloseInventory()
+    {
+        canvas.sortingLayerName = "Default";
     }
 }
