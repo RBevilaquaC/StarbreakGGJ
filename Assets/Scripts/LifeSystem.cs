@@ -27,9 +27,14 @@ public class LifeSystem : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    
     public virtual void TakeDamage(int damageAmount)
     {
         currentLife -= damageAmount;
-        if (currentLife <= 0) Death();
+        if (currentLife <= 0)
+        {
+            currentLife = 0;
+            Death();
+        }
     }
 }
