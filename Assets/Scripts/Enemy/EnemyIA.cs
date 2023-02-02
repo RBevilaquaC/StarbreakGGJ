@@ -5,12 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyIA : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField] private string targetName;
+    private Transform target;
     private NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.Find(targetName).transform;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -20,6 +22,8 @@ public class EnemyIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.localPosition);
+        if(target){
+            agent.SetDestination(target.localPosition);
+        }
     }
 }
