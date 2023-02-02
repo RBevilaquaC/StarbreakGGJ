@@ -46,4 +46,18 @@ public class SpawnManager : MonoBehaviour
             }
     }
 
+    public void SetTimeRespawn(){
+        foreach (var spawnScript in spawnScripts)
+        {
+            spawnScript.SetTimeRespawn(timeRespawn);
+        }
+    }
+
+    public void AddEnemyToList(){
+        foreach (var spawnScript in spawnScripts)
+        {
+            spawnScript.AddEnemyToList(timeRespawn);
+        }
+    }
+
 }
