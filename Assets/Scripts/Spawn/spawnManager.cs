@@ -2,22 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawnManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private bool active = true;
-    public static int limitActiveEnemies= 3;
-    public static int timeRespawn= 2;
-   
+ 
+    [SerializeField] private bool active;
+    [SerializeField] private int limitActiveEnemies;
+    [SerializeField] private float timeRespawn = 2;   
+    private SpawnScript[] spawnScripts;
     private GameObject[] respawns;
-
     private GameObject sun;
     private bool hasSun; 
 
+    void Awake() {
 
-
-    void Start() {
+        // Get Objects
+        spawnScripts = FindObjectsOfType(typeof(SpawnScript)) as SpawnScript[];
         sun = GameObject.Find("Sun");
         respawns = GameObject.FindGameObjectsWithTag("Respawn");
+
+        // Configuração inicial spawns
+        foreach (var spawnScript in spawnScripts)
+        {
+            spawnScript.SetTimeRespawn(timeRespawn);
+            spawnScript.AddEnemyToList(limitActiveEnemies);    
+        }
+        SetActiveRespawn(active);        
     }
 
     void Update(){
@@ -26,22 +35,15 @@ public class spawnManager : MonoBehaviour
         
         // hasSun = sun.activeSelf;
         // active = !hasSun;
-        
-       
-        if(!active){
-            foreach (var respawn in respawns)
-            {
-                respawn.SetActive(false);
-            }
-        }else{
-            foreach (var respawn in respawns)
-            {
-                respawn.SetActive(true);
-            }
-        }
 
-        
+        SetActiveRespawn(active);        
    }
 
+    void SetActiveRespawn(bool b){
+        foreach (var respawn in respawns)
+            {
+                respawn.SetActive(b);
+            }
+    }
 
 }
