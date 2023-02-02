@@ -8,22 +8,30 @@ public class ResourceManage : MonoBehaviour
 {
     #region Parameters
 
-    //typeRespurce: 1==Wood, 2==Stone;
+    //typeRespurce: 0==Wood, 1==Stone;
 
     private SlotResource[] slotsResource;
     private int maxResource = 30;
 
-    [SerializeField] private Sprite woodSprite;
-    [SerializeField] private Sprite stoneSprite;
+    [SerializeField] private Sprite[] resourceSprite;
     [SerializeField] private Canvas canvas;
 
     public static ResourceManage resourceManage;
+    private bool inventoryIsOpen;
 
     #endregion
 
-    private void Start()
+    private void Awake()
     {
         resourceManage = this;
+    }
+
+    private void Start()
+    {
+        if (canvas.sortingLayerName == "Default") inventoryIsOpen = false;
+        else inventoryIsOpen = true;
+        if(inventoryIsOpen) CloseInventory();
+        
         slotsResource = new SlotResource[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
             slotsResource[i] = transform.GetChild(i).GetComponent<SlotResource>();
@@ -33,7 +41,8 @@ public class ResourceManage : MonoBehaviour
     {
         //if(Input.GetButtonDown("Fire1")) AddResource(1,20);
         //if(Input.GetButtonDown("Fire2")) AddResource(2,20);
-        if (Input.GetButtonDown("InventoryKey")) canvas.sortingLayerName = "UI";
+        if (Input.GetButtonDown("InventoryKey") && !inventoryIsOpen) OpenInventory();
+        if (Input.GetButtonDown("InventoryKey") && inventoryIsOpen) CloseInventory();
     }
 
     public void AddResource(int type, int amountResource, Resource stackResource)
@@ -64,15 +73,7 @@ public class ResourceManage : MonoBehaviour
                 slotsResource[i].type = type;
                 slotsResource[i].CurrentResource += amountResource;
                 slotsResource[i].UpdateUI();
-                switch (type)
-                {
-                    case 1:
-                        slotsResource[i].UpdateIcon(woodSprite);
-                        break;
-                    case 2:
-                        slotsResource[i].UpdateIcon(stoneSprite);
-                        break;
-                }
+                slotsResource[i].UpdateIcon(resourceSprite[type]);
                 if (slotsResource[i].CurrentResource > maxResource)
                 {
                     int remainResource = slotsResource[i].CurrentResource - maxResource;
@@ -96,5 +97,22 @@ public class ResourceManage : MonoBehaviour
     public void CloseInventory()
     {
         canvas.sortingLayerName = "Default";
+        inventoryIsOpen = false;
     }
+    public void OpenInventory()
+    {
+        canvas.sortingLayerName = "UI";
+        inventoryIsOpen = true;
+    }
+
+    public Sprite GetResourceSprite(int typeID)
+    {
+        return resourceSprite[typeID];
+    }
+    
+    public int GetResourceVarietyAmount()
+    {
+        return resourceSprite.Length;
+    }
+    
 }
