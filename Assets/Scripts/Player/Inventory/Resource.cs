@@ -18,7 +18,7 @@ public class Resource : MonoBehaviour
 
     private void Start()
     {
-        if (type > ResourceManage.resourceManage.GetResourceVarietyAmount()) type = 0;
+        if (type >= ResourceManage.resourceManage.GetResourceVarietyAmount()) type = 0;
         
         imageIcon = GetComponent<SpriteRenderer>();
         imageIcon.sprite = ResourceManage.resourceManage.GetResourceSprite(type);

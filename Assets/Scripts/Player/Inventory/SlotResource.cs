@@ -28,6 +28,15 @@ public class SlotResource : MonoBehaviour
         UpdateUI();
     }
 
+    public void SlotReset()
+    {
+        haveResource = false;
+        fullStack = false;
+        CurrentResource = 0;
+        type = -1;
+        UpdateUI();
+    }
+
     public void UpdateUI()
     {
         imageIcon.enabled = true;

@@ -11,13 +11,14 @@ public class ResourceManage : MonoBehaviour
     //typeRespurce: 0==Wood, 1==Stone;
 
     private SlotResource[] slotsResource;
-    private int maxResource = 30;
-
+    
     [SerializeField] private Sprite[] resourceSprite;
     [SerializeField] private Canvas canvas;
+    [SerializeField] private int maxResource = 30;
 
     public static ResourceManage resourceManage;
     private bool inventoryIsOpen;
+    private int[] inventoryList;
 
     #endregion
 
@@ -32,6 +33,7 @@ public class ResourceManage : MonoBehaviour
         else CloseInventory();
         
         slotsResource = new SlotResource[transform.childCount];
+        inventoryList = new int[resourceSprite.Length];
         for (int i = 0; i < transform.childCount; i++)
             slotsResource[i] = transform.GetChild(i).GetComponent<SlotResource>();
     }
@@ -54,10 +56,12 @@ public class ResourceManage : MonoBehaviour
             {
                 canStorage = true;
                 slotsResource[i].CurrentResource += amountResource;
+                inventoryList[type] += amountResource;
                 slotsResource[i].UpdateUI();
                 if (slotsResource[i].CurrentResource > maxResource)
                 {
                     int remainResource = slotsResource[i].CurrentResource - maxResource;
+                    inventoryList[type] -= remainResource;
                     slotsResource[i].CurrentResource = maxResource;
                     slotsResource[i].fullStack = true;
                     slotsResource[i].UpdateUI();
@@ -71,11 +75,13 @@ public class ResourceManage : MonoBehaviour
                 slotsResource[i].haveResource = true;
                 slotsResource[i].type = type;
                 slotsResource[i].CurrentResource += amountResource;
+                inventoryList[type] += amountResource;
                 slotsResource[i].UpdateUI();
                 slotsResource[i].UpdateIcon(resourceSprite[type]);
                 if (slotsResource[i].CurrentResource > maxResource)
                 {
                     int remainResource = slotsResource[i].CurrentResource - maxResource;
+                    inventoryList[type] -= remainResource;
                     slotsResource[i].CurrentResource = maxResource;
                     slotsResource[i].fullStack = true;
                     slotsResource[i].UpdateUI();
@@ -90,6 +96,48 @@ public class ResourceManage : MonoBehaviour
             stackResource.SetActiveObj(true);
             stackResource.amount = amountResource;
             stackResource.UpdateUI();
+        }
+    }
+    
+    public void AddResource(int type, int amountResource)
+    {
+        for (int i = 0; i < slotsResource.Length; i++)
+        {
+            if (slotsResource[i].type == type && !slotsResource[i].fullStack)
+            {
+                slotsResource[i].CurrentResource += amountResource;
+                inventoryList[type] += amountResource;
+                slotsResource[i].UpdateUI();
+                if (slotsResource[i].CurrentResource > maxResource)
+                {
+                    int remainResource = slotsResource[i].CurrentResource - maxResource;
+                    inventoryList[type] -= remainResource;
+                    slotsResource[i].CurrentResource = maxResource;
+                    slotsResource[i].fullStack = true;
+                    slotsResource[i].UpdateUI();
+                    AddResource(type,remainResource);
+                }
+                break;
+            }
+            else if (!slotsResource[i].haveResource)
+            {
+                slotsResource[i].haveResource = true;
+                slotsResource[i].type = type;
+                slotsResource[i].CurrentResource += amountResource;
+                inventoryList[type] += amountResource;
+                slotsResource[i].UpdateUI();
+                slotsResource[i].UpdateIcon(resourceSprite[type]);
+                if (slotsResource[i].CurrentResource > maxResource)
+                {
+                    int remainResource = slotsResource[i].CurrentResource - maxResource;
+                    inventoryList[type] -= remainResource;
+                    slotsResource[i].CurrentResource = maxResource;
+                    slotsResource[i].fullStack = true;
+                    slotsResource[i].UpdateUI();
+                    AddResource(type,remainResource);
+                }
+                break;
+            }
         }
     }
 
@@ -113,5 +161,11 @@ public class ResourceManage : MonoBehaviour
     {
         return resourceSprite.Length;
     }
-    
+
+    public void SortInventory()
+    {
+        foreach (var slot in slotsResource) slot.SlotReset();
+        for(int i = 0; i < inventoryList.Length; i++) AddResource(i,inventoryList[i]);
+        for(int i = 0; i < inventoryList.Length; i++) inventoryList[i] /= 2;
+    }
 }

@@ -2511,7 +2511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6321540521410257918, guid: 41c1ecd9af3d4084a84717005e4fc4fe, type: 3}
       propertyPath: resourceSprite.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6321540521410257918, guid: 41c1ecd9af3d4084a84717005e4fc4fe, type: 3}
       propertyPath: resourceSprite.Array.data[0]
