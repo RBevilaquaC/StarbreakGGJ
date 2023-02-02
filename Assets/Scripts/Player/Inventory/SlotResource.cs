@@ -24,6 +24,7 @@ public class SlotResource : MonoBehaviour
     {
         textAmount = transform.GetChild(0).GetComponent<TMP_Text>();
         imageIcon = transform.GetChild(1).GetComponent<Image>();
+        type = -1;
         UpdateUI();
     }
 

@@ -19,6 +19,7 @@ public class Resource : MonoBehaviour
     private void Start()
     {
         if (type > ResourceManage.resourceManage.GetResourceVarietyAmount()) type = 0;
+        
         imageIcon = GetComponent<SpriteRenderer>();
         imageIcon.sprite = ResourceManage.resourceManage.GetResourceSprite(type);
         textAmount = transform.GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>();

@@ -29,8 +29,7 @@ public class ResourceManage : MonoBehaviour
     private void Start()
     {
         if (canvas.sortingLayerName == "Default") inventoryIsOpen = false;
-        else inventoryIsOpen = true;
-        if(inventoryIsOpen) CloseInventory();
+        else CloseInventory();
         
         slotsResource = new SlotResource[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
@@ -42,7 +41,7 @@ public class ResourceManage : MonoBehaviour
         //if(Input.GetButtonDown("Fire1")) AddResource(1,20);
         //if(Input.GetButtonDown("Fire2")) AddResource(2,20);
         if (Input.GetButtonDown("InventoryKey") && !inventoryIsOpen) OpenInventory();
-        if (Input.GetButtonDown("InventoryKey") && inventoryIsOpen) CloseInventory();
+        else if (Input.GetButtonDown("InventoryKey") && inventoryIsOpen) CloseInventory();
     }
 
     public void AddResource(int type, int amountResource, Resource stackResource)
