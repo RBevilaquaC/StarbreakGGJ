@@ -2,49 +2,72 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawnScript : MonoBehaviour
+public class SpawnScript : MonoBehaviour
 {   
+
     [SerializeField] private GameObject enemyPrefab;
-    private List<GameObject> enemies;
+    private List<GameObject> enemies = new List<GameObject>();
     private int limitActiveEnemies;
-    private int timeRespawn;
+    private float timeRespawn;
+    private IEnumerator coroutineSpawnEnemy = null;
 
-    void Start()
-    {   
-        limitActiveEnemies = spawnManager.limitActiveEnemies;
-        timeRespawn = spawnManager.timeRespawn;
 
-        enemies = new List<GameObject>();
+    private void OnEnable() {
+        foreach (var enemy in enemies)
+            {   
+                enemy.SetActive(true);  
+            }
+        coroutineSpawnEnemy = SpawnEnemy(timeRespawn);
 
-        AddEnemyToList(limitActiveEnemies);
-        
+        StartCoroutine(coroutineSpawnEnemy);
     }
 
-
-    void Update()
-    {
-        
-        StartCoroutine(RespawnEnemy(timeRespawn));
-    
+    private void OnDisable() {
+        foreach (var enemy in enemies)
+            {   
+                enemy.SetActive(false);  
+            }      
+        StopCoroutine(coroutineSpawnEnemy);
     }
 
-    void AddEnemyToList(int n){
+    public void SetTimeRespawn(float seconds){
+        StopCoroutine(coroutineSpawnEnemy);
+        timeRespawn = seconds;
+        coroutineSpawnEnemy = SpawnEnemy(timeRespawn);
+        
+        if(gameObject.activeSelf){
+            StartCoroutine(coroutineSpawnEnemy);
+        }
+
+    }
+
+    IEnumerator SpawnEnemy(float seconds){
+        while(enemies.Count != 0){
+            foreach (var enemy in enemies)
+            {   
+                yield return new WaitForSeconds(seconds);
+                enemy.SetActive(true);  
+            }
+        }
+    }
+
+   
+    public void AddEnemyToList(int n){
+        if(coroutineSpawnEnemy != null){
+            StopCoroutine(coroutineSpawnEnemy);
+        }
+        
         for (int i = 0; i < n; i++)
         {
             GameObject oneEnemy = Instantiate(enemyPrefab, 
                     gameObject.transform.position, 
                     Quaternion.identity);
             
-            oneEnemy.SetActive(false);
             enemies.Add((GameObject)oneEnemy);
         }
-    }
-
-    IEnumerator RespawnEnemy(int seconds){
-        foreach (var enemy in enemies)
-        {   
-            enemy.SetActive(true);  
-            yield return new WaitForSeconds(seconds);
+        
+        if(gameObject.activeSelf && coroutineSpawnEnemy != null){
+            StartCoroutine(coroutineSpawnEnemy);
         }
     }
 }
