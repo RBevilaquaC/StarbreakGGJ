@@ -56,7 +56,7 @@ public class SpawnManager : MonoBehaviour
     public void AddEnemyToList(){
         foreach (var spawnScript in spawnScripts)
         {
-            spawnScript.AddEnemyToList(timeRespawn);
+            spawnScript.AddEnemyToList(limitActiveEnemies);
         }
     }
 
