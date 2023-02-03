@@ -200,6 +200,32 @@ public class ResourceManage : MonoBehaviour
         return 0;
     }
 
+    public int ResourceDelivery(int type, int resourceAmount)
+    {
+        if (inventoryList[type] < resourceAmount) return 0;
+        for (int i = slotsResource.Length; i > 0; i--)
+        {
+            if (slotsResource[i].type == type)
+            {
+                if (slotsResource[i].CurrentResource <= resourceAmount)
+                {
+                    inventoryList[type] -= slotsResource[i].CurrentResource;
+                    resourceAmount -= slotsResource[i].CurrentResource;
+                    slotsResource[i].SlotReset();
+                    ResourceDelivery(type,resourceAmount);
+                }
+                else
+                {
+                    inventoryList[type] -= resourceAmount;
+                    slotsResource[i].CurrentResource -= resourceAmount;
+                    slotsResource[i].UpdateUI();
+                }
+                break;
+            }
+        }
+        return 1;
+    }
+
     public void TransferResource(SlotResource slot)
     {
         int slotResource = slot.CurrentResource;
