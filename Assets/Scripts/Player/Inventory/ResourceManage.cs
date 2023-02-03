@@ -32,10 +32,9 @@ public class ResourceManage : MonoBehaviour
         if (canvas.sortingLayerName == "Default") inventoryIsOpen = false;
         else CloseInventory();
         
-        slotsResource = new SlotResource[transform.childCount];
         inventoryList = new int[resourceSprite.Length];
-        for (int i = 0; i < transform.childCount; i++)
-            slotsResource[i] = transform.GetChild(i).GetComponent<SlotResource>();
+        
+        FillSlotResource();
     }
 
     private void Update()
@@ -46,8 +45,17 @@ public class ResourceManage : MonoBehaviour
         else if (Input.GetButtonDown("InventoryKey") && inventoryIsOpen) CloseInventory();
     }
 
+    private void FillSlotResource()
+    {
+        slotsResource = new SlotResource[transform.childCount];
+        for (int i = 0; i < transform.childCount; i++)
+            slotsResource[i] = transform.GetChild(i).GetComponent<SlotResource>();
+        
+    }
+    
     public void AddResource(int type, int amountResource, Resource stackResource)
     {
+        if(amountResource == 0) return;
         bool canStorage = false;
         stackResource.SetActiveObj(false);
         for (int i = 0; i < slotsResource.Length; i++)
@@ -101,6 +109,7 @@ public class ResourceManage : MonoBehaviour
     
     public void AddResource(int type, int amountResource)
     {
+        if(amountResource == 0) return;
         for (int i = 0; i < slotsResource.Length; i++)
         {
             if (slotsResource[i].type == type && !slotsResource[i].fullStack)
@@ -141,6 +150,65 @@ public class ResourceManage : MonoBehaviour
         }
     }
 
+    public int ReceiveTransferResource(int type, int amountResource)
+    {
+        if(amountResource == 0) return 0;
+        bool canStorage = false;
+        for (int i = 0; i < slotsResource.Length; i++)
+        {
+            if (slotsResource[i].type == type && !slotsResource[i].fullStack)
+            {
+                canStorage = true;
+                slotsResource[i].CurrentResource += amountResource;
+                inventoryList[type] += amountResource;
+                slotsResource[i].UpdateUI();
+                if (slotsResource[i].CurrentResource > maxResource)
+                {
+                    int remainResource = slotsResource[i].CurrentResource - maxResource;
+                    inventoryList[type] -= remainResource;
+                    slotsResource[i].CurrentResource = maxResource;
+                    slotsResource[i].fullStack = true;
+                    slotsResource[i].UpdateUI();
+                    ReceiveTransferResource(type,remainResource);
+                }
+                break;
+            }
+            else if (!slotsResource[i].haveResource)
+            {
+                canStorage = true;
+                slotsResource[i].haveResource = true;
+                slotsResource[i].type = type;
+                slotsResource[i].CurrentResource += amountResource;
+                inventoryList[type] += amountResource;
+                slotsResource[i].UpdateUI();
+                slotsResource[i].UpdateIcon(resourceSprite[type]);
+                if (slotsResource[i].CurrentResource > maxResource)
+                {
+                    int remainResource = slotsResource[i].CurrentResource - maxResource;
+                    inventoryList[type] -= remainResource;
+                    slotsResource[i].CurrentResource = maxResource;
+                    slotsResource[i].fullStack = true;
+                    slotsResource[i].UpdateUI();
+                    ReceiveTransferResource(type,remainResource);
+                }
+                break;
+            }
+        }
+
+        if (!canStorage)
+            return amountResource;
+        return 0;
+    }
+
+    public void TransferResource(SlotResource slot)
+    {
+        int slotResource = slot.CurrentResource;
+        int remainResource = Container.container.ReceiveTransferResource(slot.type,slot.CurrentResource);
+        inventoryList[slot.type] -= (slotResource - remainResource) ;
+        if (remainResource > 0) slot.CurrentResource = remainResource;
+        else slot.SlotReset();
+    }
+
     public void CloseInventory()
     {
         canvas.sortingLayerName = "Default";
@@ -162,6 +230,11 @@ public class ResourceManage : MonoBehaviour
         return resourceSprite.Length;
     }
 
+    public int GetMaxStackResource()
+    {
+        return maxResource;
+    }
+    
     public void SortInventory()
     {
         foreach (var slot in slotsResource) slot.SlotReset();
