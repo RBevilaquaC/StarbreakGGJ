@@ -18,6 +18,7 @@ public class SlotResource : MonoBehaviour
     private TMP_Text textAmount;
     private Image imageIcon;
 
+    
     #endregion
 
     private void Start()
