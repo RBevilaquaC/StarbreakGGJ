@@ -52,10 +52,12 @@ public class Crossbow : MonoBehaviour
 
         if (distance <= range)
         {
+            GetComponent<Animator>().SetBool("Shoot", true);
             return nearest;
         }
         else
         {
+            GetComponent<Animator>().SetBool("Shoot", false);
             return null;
         }
     }
