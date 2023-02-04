@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4981422528495889996}
   - component: {fileID: 4981422528495889997}
   - component: {fileID: 4981422528495889986}
+  - component: {fileID: 801105090852160846}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -103,6 +104,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &801105090852160846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981422528495889999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b7252a6da9a9f47b07e1e0dc82f24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &4981422529535372404
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +198,7 @@ MonoBehaviour:
   - {x: -5.4887767, y: 0.48066878, z: 0}
   m_ShapePathHash: 764231619
   m_Mesh: {fileID: 0}
-  m_InstanceId: 27648
+  m_InstanceId: 64292
 --- !u!1 &4981422529744366629
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +214,7 @@ GameObject:
   - component: {fileID: 4981422529744366617}
   - component: {fileID: 4981422529744366616}
   - component: {fileID: 4981422529744366619}
+  - component: {fileID: 7685803340277550204}
   m_Layer: 0
   m_Name: Mobile
   m_TagString: Untagged
@@ -365,6 +383,22 @@ CircleCollider2D:
   m_Offset: {x: -1.4535532, y: 3.1206641}
   serializedVersion: 2
   m_Radius: 0.46313715
+--- !u!114 &7685803340277550204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981422529744366629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b7252a6da9a9f47b07e1e0dc82f24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &4981422529786470888
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +540,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.4395093}
-  m_ConnectedAnchor: {x: 10.545223, y: 3.1726618}
+  m_ConnectedAnchor: {x: 6.5082, y: 4.585014}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 10
@@ -541,7 +575,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5000001, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 27686
+  m_InstanceId: 64314
 --- !u!257 &4981422529786470883
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -556,7 +590,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: -0.06095127, y: -0.43837926}
-  m_Target: {x: 10.545223, y: 2.693057}
+  m_Target: {x: 6.5082, y: 3.6258047}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -791,7 +825,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.4395093}
-  m_ConnectedAnchor: {x: 4.9201236, y: 1.290762}
+  m_ConnectedAnchor: {x: -4.742, y: 0.8212132}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 10
@@ -826,7 +860,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5000001, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 27746
+  m_InstanceId: 64338
 --- !u!257 &4981422530036133408
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -841,7 +875,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: -0.06095127, y: -0.43837926}
-  m_Target: {x: 4.9201236, y: 0.8111573}
+  m_Target: {x: -4.742, y: -0.13799621}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
