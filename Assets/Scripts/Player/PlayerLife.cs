@@ -11,9 +11,20 @@ public class PlayerLife : LifeSystem
 
     [SerializeField] private Slider lifeBar;
     [SerializeField] private GameObject gameOverPanel;
-    public bool isPoisoned;
-    private float poisonDuration;
-    private int poisonDamage;
+    public static bool isPoisoned;
+    private float poisonDuration = 12;
+    private int poisonDamage = 1;
+    private float poisonIntervalDamage =3;
+
+    [Serializable]
+    private struct Effects
+    {
+        public String EffectName;
+        public GameObject ParticleEffect;
+            
+    }
+
+    [SerializeField] private List<Effects> PlayerParticles;
 
     #endregion
 
@@ -47,24 +58,47 @@ public class PlayerLife : LifeSystem
         lifeBar.value = (float)currentLife / maxLife;
     }
 
-    private void Update()
+    protected override void Start()
     {
+        base.Start();
+        //StartCoroutine(Poisoning(poisonDuration, poisonIntervalDamage, poisonDamage));
+    }
+    
+    public void ApplyPoison(int damage, float duration, float interval, PlayerLife pl)
+    {
+        if (isPoisoned) return;
+        StartCoroutine(Poisoning(duration, interval, damage, pl));
     }
 
-    public void ApplyPoison(int damage, float duration)
+    private static IEnumerator Poisoning(float poisonDuration, float poisonIntervalDamage, int PoisonDamage, PlayerLife pl)
     {
-        StartCoroutine(Poisoning(duration, damage));
-    }
-
-    private IEnumerator Poisoning(float duration, float damage)
-    {
-        float elapsedTime = 0f;
-        while (elapsedTime < duration)
+        isPoisoned = true;
+        var t = poisonDuration;
+        pl.PlayParticleEffect("PoisonEffect");
+        while ( t > 0)
         {
-            TakeDamage((int)(duration * Time.deltaTime));
-            elapsedTime += Time.deltaTime;
-            Debug.Log("dMGE2");
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(poisonIntervalDamage);
+            pl.TakeDamage(1);
+            print(PoisonDamage.ToString());
+            --t;
+        }
+        isPoisoned = false;
+        
+
+
+        //isPoisoned = true;
+
+    }
+    public void PlayParticleEffect(string name)
+    {
+        foreach (Effects particle  in PlayerParticles)
+        {
+            if (particle.EffectName == name)
+            {
+                var newObj = Instantiate(particle.ParticleEffect, transform.position, Quaternion.identity);
+                newObj.transform.parent = transform;
+                newObj.transform.localScale = new Vector3(1, 1, 1);
+            }
         }
     }
 }
