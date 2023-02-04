@@ -9,9 +9,11 @@ public class PlayerStatus : MonoBehaviour
 
     public static GameObject playerObj;
     public static PlayerStatus status;
+    private Animator anim;
     
     [Header("Moviment Settings")] 
     [SerializeField] private float movimentSpeed;
+    [SerializeField] private float rotateModifier;
     
     #endregion
 
@@ -24,6 +26,11 @@ public class PlayerStatus : MonoBehaviour
     public float GetMovimentSpeed()
     {
         return movimentSpeed;
+    }
+
+    public float GetRotateModifier()
+    {
+        return rotateModifier;
     }
 
     public void LoadScene(string sceneName)
