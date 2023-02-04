@@ -14,7 +14,6 @@ public class SpawnManager : MonoBehaviour
     private bool hasSun; 
 
     void Awake() {
-
         // Get Objects
         spawnScripts = FindObjectsOfType(typeof(SpawnScript)) as SpawnScript[];
         sun = GameObject.Find("Sun");

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpawnScript : MonoBehaviour
 {   
-
     [SerializeField] private GameObject enemyPrefab;
     private List<GameObject> enemies = new List<GameObject>();
     private int limitActiveEnemies;
