@@ -16,6 +16,8 @@ public class Crossbow : MonoBehaviour
     // Variável para armazenar o inimigo mais próximo
     private GameObject nearestEnemy;
 
+    private bool canShoot = false;
+
     void Update()
     {
         // Atualiza o inimigo mais próximo
@@ -24,10 +26,11 @@ public class Crossbow : MonoBehaviour
         if (nearestEnemy != null) RotateTowardsEnemy();
 
         // Se houver um inimigo na distância de alcance e o tempo de recarga tiver passado, rotacione e atire
-        if (nearestEnemy != null && Time.time >= lastFireTime + fireRate)
+        if (nearestEnemy != null && Time.time >= lastFireTime + fireRate && canShoot)
         {
             ShootAtEnemy();
         }
+        
     }
 
     // Função para encontrar o inimigo mais próximo
@@ -71,8 +74,18 @@ public class Crossbow : MonoBehaviour
     {
         GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
         newProjectile.GetComponent<Rigidbody2D>().velocity = (nearestEnemy.transform.position - transform.position).normalized * 10.0f;
-
+        Destroy(newProjectile, 5f);
         lastFireTime = Time.time;
     }
-    
+
+    public void SetCanShoot()
+    {
+        canShoot = true;
+    }
+
+    public void DisableCanShoot()
+    {
+        canShoot = false;
+    }
+
 }
