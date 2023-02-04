@@ -28,7 +28,7 @@ public class PlayerLife : LifeSystem
 
     #endregion
 
-    protected override void Heal(int healAmount)
+    public override void Heal(int healAmount)
     {
         base.Heal(healAmount);
         UpdateLifeBar();
