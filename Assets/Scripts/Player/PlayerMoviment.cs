@@ -35,11 +35,11 @@ public class PlayerMoviment : MonoBehaviour
 
     private void Move()
     {
-        if(dirToMove != Vector2.zero)
+        if(dirToMove != Vector2.zero && !PlayerStatus.status.isAttacking)
         {
             rb.velocity = dirToMove.normalized * PlayerStatus.status.GetMovimentSpeed();
             anim.Play("Walking");
-        } else
+        } else if(!PlayerStatus.status.isAttacking)
         {
             rb.velocity = Vector2.zero;
             anim.Play("Idle");
@@ -54,4 +54,5 @@ public class PlayerMoviment : MonoBehaviour
         Vector3 targetRotation = new Vector3(0, 0, angle-90);
         spritePos.rotation = (Quaternion.Lerp(spritePos.rotation, Quaternion.Euler(targetRotation), PlayerStatus.status.GetRotateModifier()));
     }
+    
 }
