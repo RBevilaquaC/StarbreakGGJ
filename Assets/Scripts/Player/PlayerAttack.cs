@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     #region Parameters
 
     [SerializeField] private int damageAttack;
+    [SerializeField] private CircleCollider2D cc;
     private Animator anim;
 
     #endregion
@@ -16,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         anim = transform.GetChild(0).GetComponent<Animator>();
+        cc.enabled = false;
     }
 
     private void Update()
@@ -29,17 +31,19 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
+        cc.enabled = true;
         anim.Play("Attack");
         Invoke("DisableAttack",0.3f);
     }
 
     private void DisableAttack()
     {
+        cc.enabled = false;
         PlayerStatus.status.isAttacking = false;
     }
 
     
-    private void OnTriggerStay2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if(col.GetComponent<LifeSystem>() != null && col.GetComponent<PlayerStatus>() == null && PlayerStatus.status.isAttacking)
         {
