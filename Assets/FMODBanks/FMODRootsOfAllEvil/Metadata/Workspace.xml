@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="Workspace" id="{73edbf14-552d-4ce0-83b5-a6395b8b9395}">
+		<property name="builtBanksOutputDirectory">
+			<value>../GitHub/StarbreakGGJ/Assets/FMODBanks</value>
+		</property>
+		<relationship name="masterEventFolder">
+			<destination>{5742a7fe-6fc9-40fa-89c5-9bbde1d1ddfb}</destination>
+		</relationship>
+		<relationship name="masterTagFolder">
+			<destination>{e5e287c3-b6b3-4a62-95e3-93da07e9a2f4}</destination>
+		</relationship>
+		<relationship name="masterEffectPresetFolder">
+			<destination>{2f5c5faf-d42a-4313-8cc4-18c0ddf3e196}</destination>
+		</relationship>
+		<relationship name="masterParameterPresetFolder">
+			<destination>{1126e232-29cb-4c39-806d-01e0f982901d}</destination>
+		</relationship>
+		<relationship name="masterBankFolder">
+			<destination>{2dfd1b77-4f5e-4d99-ad25-5c9861ef7c64}</destination>
+		</relationship>
+		<relationship name="masterSandboxFolder">
+			<destination>{45298862-1da1-484d-a742-e2fc8e1d3a15}</destination>
+		</relationship>
+		<relationship name="masterAssetFolder">
+			<destination>{bc2611b4-3e7d-4948-be48-5c9ed9e293a7}</destination>
+		</relationship>
+		<relationship name="mixer">
+			<destination>{cfea01c6-e220-478b-8367-ad5408f5d493}</destination>
+		</relationship>
+		<relationship name="profilerSessionFolder">
+			<destination>{480cf7a6-97d7-47c7-88ce-18461bc31217}</destination>
+		</relationship>
+		<relationship name="platforms">
+			<destination>{f9a4bc39-d6be-41f2-b5b0-a6a8ecf75661}</destination>
+		</relationship>
+	</object>
+</objects>
