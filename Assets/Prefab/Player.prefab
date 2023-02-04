@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 745606958}
   - component: {fileID: 745606959}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2032021972}
   - component: {fileID: 2032021973}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VisualRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,9 +208,10 @@ GameObject:
   - component: {fileID: 1688292548363016629}
   - component: {fileID: 537272648781620726}
   - component: {fileID: 537272648781620722}
-  m_Layer: 0
+  - component: {fileID: 537272648781620723}
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,6 +261,9 @@ MonoBehaviour:
   maxLife: 10
   lifeBar: {fileID: 0}
   gameOverPanel: {fileID: 0}
+  PlayerParticles:
+  - EffectName: PoisonEffect
+    ParticleEffect: {fileID: 394742896543229781, guid: f588ff3441711ae479e577ac8e52a2cf, type: 3}
 --- !u!114 &537272648781620726
 MonoBehaviour:
   m_ObjectHideFlags: 0
