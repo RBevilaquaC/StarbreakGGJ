@@ -32,6 +32,18 @@ public class PlayerStatus : MonoBehaviour
     {
         return rotateModifier;
     }
+    
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        
+    }
+    
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        
+    }
 
     public void LoadScene(string sceneName)
     {
