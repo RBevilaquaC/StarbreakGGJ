@@ -17,6 +17,7 @@ public class CameraControlelr : MonoBehaviour
     private void Start()
     {
         playerPos = PlayerStatus.playerObj.transform;
+        transform.position = playerPos.position;
     }
 
     private void LateUpdate()

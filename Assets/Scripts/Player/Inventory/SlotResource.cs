@@ -18,12 +18,23 @@ public class SlotResource : MonoBehaviour
     private TMP_Text textAmount;
     private Image imageIcon;
 
+    
     #endregion
 
     private void Start()
     {
         textAmount = transform.GetChild(0).GetComponent<TMP_Text>();
         imageIcon = transform.GetChild(1).GetComponent<Image>();
+        type = -1;
+        UpdateUI();
+    }
+
+    public void SlotReset()
+    {
+        haveResource = false;
+        fullStack = false;
+        CurrentResource = 0;
+        type = -1;
         UpdateUI();
     }
 
