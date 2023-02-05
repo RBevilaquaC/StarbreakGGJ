@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAttack: 5
+  cc: {fileID: 1866559110}
 --- !u!50 &537272648781620722
 Rigidbody2D:
   serializedVersion: 4

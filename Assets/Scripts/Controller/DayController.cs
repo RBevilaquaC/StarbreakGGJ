@@ -32,7 +32,6 @@ public class DayController : MonoBehaviour
         light.intensity = 0;
         isDay = true;
         transform.position = startPos;
-        PlayerStatus.playerObj.transform.GetChild(1).gameObject.SetActive(false);
         GetComponent<Rigidbody2D>().velocity = Vector2.right * 200/dayDuration;
     }
 
