@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5708209534311610081}
   - component: {fileID: 4450123071965456839}
   - component: {fileID: 5069883744577518037}
+  - component: {fileID: -9011831285801816778}
   m_Layer: 6
   m_Name: Mushroom
   m_TagString: Untagged
@@ -152,6 +153,25 @@ CircleCollider2D:
   m_Offset: {x: 0.0011291206, y: 0.03505972}
   serializedVersion: 2
   m_Radius: 0.38509372
+--- !u!114 &-9011831285801816778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672927649832051728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc92787f76f92894690bddb11a960b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropable:
+  - {fileID: 9185443327647392924, guid: bffd1ad579fb7e749a05ec6ff5e66b81, type: 3}
+  - {fileID: 9185443327647392924, guid: f4cf9451e2efa0345826675d5f0bea59, type: 3}
+  - {fileID: 9185443327647392924, guid: 91689ef3a8c0c8c4ba5131c8ba853c73, type: 3}
+  - {fileID: 9185443327647392924, guid: 178c55194f454e04b92a03f1c63b20b2, type: 3}
+  content: {fileID: 0}
+  rangeDrop: 0
 --- !u!1 &7798845683662725497
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +290,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.58
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4991,8 +5011,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 225115689
-  m_SortingLayer: 1
+  m_SortingLayerID: -2107289525
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
