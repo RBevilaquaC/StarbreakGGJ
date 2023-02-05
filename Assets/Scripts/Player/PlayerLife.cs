@@ -37,6 +37,9 @@ public class PlayerLife : LifeSystem
     protected override void Death()
     {
         base.Death();
+        ResourceManage.resourceManage.CloseInventory();
+        ResourceManage.resourceManage.enabled = false;
+        Container.container.CloseContainer();
         gameOverPanel.SetActive(true);
     }
     
