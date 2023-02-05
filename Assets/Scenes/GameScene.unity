@@ -10174,6 +10174,10 @@ PrefabInstance:
       propertyPath: cc
       value: 
       objectReference: {fileID: 1767610112}
+    - target: {fileID: 6854766569386212558, guid: 3b75c1ccf94a1504e9194c511657d2df, type: 3}
+      propertyPath: crossbow
+      value: 
+      objectReference: {fileID: 8245575125162442376, guid: b93531b27febf3e4089c874e3a90bd89, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b75c1ccf94a1504e9194c511657d2df, type: 3}
 --- !u!4 &1767610110 stripped

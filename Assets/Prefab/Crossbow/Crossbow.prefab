@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8245575124434348832}
   - component: {fileID: 8245575124434348833}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2107289525
+  m_SortingLayer: 2
   m_SortingOrder: 5
   m_Sprite: {fileID: -1746777185, guid: 27e5cc9ddf4905a4685add01c288ec2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8245575125159019616}
   - component: {fileID: 8245575125159019617}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: aste1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,9 +154,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -2107289525
+  m_SortingLayer: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1859695475, guid: 27e5cc9ddf4905a4685add01c288ec2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -179,7 +179,8 @@ GameObject:
   - component: {fileID: 8245575125162442377}
   - component: {fileID: 8245575125162442382}
   - component: {fileID: 8853557586849299819}
-  m_Layer: 0
+  - component: {fileID: 1652223275257160512}
+  m_Layer: 3
   m_Name: Crossbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,6 +248,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1652223275257160512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8245575125162442376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364900a9edb4034287cb6d15004c36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
+  fireRate: 1
+  projectile: {fileID: 2429716325389154786, guid: b186b61fb18164343add1fcaf5fa9d1a, type: 3}
 --- !u!1 &8245575125350531396
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8245575125350531397}
   - component: {fileID: 8245575125350531402}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: aste2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,9 +333,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -2107289525
+  m_SortingLayer: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1859695475, guid: 27e5cc9ddf4905a4685add01c288ec2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -341,7 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8245575125999215276}
   - component: {fileID: 8245575125999215277}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,9 +417,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -2107289525
+  m_SortingLayer: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1459399415, guid: 27e5cc9ddf4905a4685add01c288ec2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -425,7 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8245575126453964149}
   - component: {fileID: 8245575126453964154}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: suport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,9 +501,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -2107289525
+  m_SortingLayer: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1693050388, guid: 27e5cc9ddf4905a4685add01c288ec2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
