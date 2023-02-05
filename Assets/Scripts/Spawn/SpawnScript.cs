@@ -10,6 +10,9 @@ public class SpawnScript : MonoBehaviour
     private float timeRespawn;
     private IEnumerator coroutineSpawnEnemy = null;
 
+    [SerializeField] private GameObject[] enemySpawnPoints;
+    private int randomSpawn;
+
 
     private void OnEnable() {
         coroutineSpawnEnemy = SpawnEnemy(timeRespawn);
@@ -52,10 +55,11 @@ public class SpawnScript : MonoBehaviour
         
         for (int i = 0; i < n; i++)
         {
+            // GameObject oneEnemy = Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
+            GetRandomSpawnPoint();
             GameObject oneEnemy = Instantiate(enemyPrefab, 
-                    gameObject.transform.position, 
-                    Quaternion.identity);
-            
+                enemySpawnPoints[randomSpawn].transform.position, 
+                Quaternion.identity);
             oneEnemy.SetActive(false);
             enemies.Add((GameObject)oneEnemy);
         }
@@ -63,5 +67,10 @@ public class SpawnScript : MonoBehaviour
         if(gameObject.activeSelf && coroutineSpawnEnemy != null){
             StartCoroutine(coroutineSpawnEnemy);
         }
+    }
+
+    private void GetRandomSpawnPoint()
+    {
+        randomSpawn = Random.Range(0, enemySpawnPoints.Length);
     }
 }
