@@ -18,6 +18,7 @@ public class DayController : MonoBehaviour
     private Light2D light;
     public int dayCount;
     public bool isDay;
+    [SerializeField] private SpawnManager spawnManager;
 
     #endregion
 
@@ -63,6 +64,7 @@ public class DayController : MonoBehaviour
             currentTime = 0;
             transform.position = startPos;
             PlayerStatus.playerObj.transform.GetChild(1).gameObject.SetActive(true);
+            spawnManager.active = true;
         }
         else
         {
@@ -71,6 +73,7 @@ public class DayController : MonoBehaviour
             currentTime = 0;
             dayCount++;
             transform.position = startPos;
+            spawnManager.active = false;
         }
     }
 }

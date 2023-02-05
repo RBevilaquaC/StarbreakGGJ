@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,12 +18,28 @@ public class Crossbow : MonoBehaviour
     private GameObject nearestEnemy;
 
     private bool canShoot = false;
+    private bool canMove = false;
+
+    private void Start()
+    {
+        StartCoroutine(CrossbowConstruct());
+    }
+    
+    IEnumerator CrossbowConstruct()
+    {
+        yield return new WaitForSeconds(10f);
+        GetComponent<ParticleSystem>().Stop();
+        canMove = true;
+
+    }
 
     void Update()
     {
+        if (!canMove) return;
+        
         // Atualiza o inimigo mais próximo
         nearestEnemy = FindNearestEnemy();
-        
+
         if (nearestEnemy != null) RotateTowardsEnemy();
 
         // Se houver um inimigo na distância de alcance e o tempo de recarga tiver passado, rotacione e atire

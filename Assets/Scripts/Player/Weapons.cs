@@ -24,7 +24,12 @@ public class Weapons : MonoBehaviour
 
     private void InstantiateCrossbow()
     {
-        Instantiate(crossbow, gameObject.transform.position, Quaternion.identity);
+        if (ResourceManage.resourceManage.ResourceDelivery(0, 50) != 0
+            && ResourceManage.resourceManage.ResourceDelivery(1, 10) != 0)
+        {
+            Instantiate(crossbow, gameObject.transform.position, gameObject.transform.rotation);
+        }
+        else Debug.Log("Sem recursos!");
     }
-    
+
 }

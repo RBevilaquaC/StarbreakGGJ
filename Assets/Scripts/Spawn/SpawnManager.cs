@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
  
-    [SerializeField] private bool active;
+    public bool active;
     [SerializeField] private int limitActiveEnemies;
     [SerializeField] private float timeRespawn = 2;   
     private SpawnScript[] spawnScripts;
