@@ -28,7 +28,7 @@ public class PlayerLife : LifeSystem
 
     #endregion
 
-    protected override void Heal(int healAmount)
+    public override void Heal(int healAmount)
     {
         base.Heal(healAmount);
         UpdateLifeBar();
@@ -37,6 +37,9 @@ public class PlayerLife : LifeSystem
     protected override void Death()
     {
         base.Death();
+        ResourceManage.resourceManage.CloseInventory();
+        ResourceManage.resourceManage.enabled = false;
+        Container.container.CloseContainer();
         gameOverPanel.SetActive(true);
     }
     
