@@ -10,6 +10,7 @@ public class PlayerStatus : MonoBehaviour
     public static GameObject playerObj;
     public static PlayerStatus status;
     private Animator anim;
+    [HideInInspector] public bool isAttacking;
     
     [Header("Moviment Settings")] 
     [SerializeField] private float movimentSpeed;
@@ -49,4 +50,5 @@ public class PlayerStatus : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+    
 }
