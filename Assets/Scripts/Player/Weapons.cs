@@ -6,6 +6,7 @@ public class Weapons : MonoBehaviour
 {
 
     [SerializeField] private GameObject crossbow;
+    [SerializeField] private GameObject canInstantiateText;
      
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,9 @@ public class Weapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ResourceManage.resourceManage.ResourcesWeaponFeedback()) canInstantiateText.SetActive(true);
+        else canInstantiateText.SetActive(false);
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             InstantiateCrossbow();

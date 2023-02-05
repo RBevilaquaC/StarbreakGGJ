@@ -270,4 +270,9 @@ public class ResourceManage : MonoBehaviour
         for(int i = 0; i < inventoryList.Length; i++) AddResource(i,inventoryList[i]);
         for(int i = 0; i < inventoryList.Length; i++) inventoryList[i] /= 2;
     }
+
+    public bool ResourcesWeaponFeedback()
+    {
+        return (inventoryList[0] >= 50 && inventoryList[1] >= 10);
+    }
 }
