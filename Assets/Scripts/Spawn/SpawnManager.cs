@@ -9,6 +9,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private int limitActiveEnemies;
     [SerializeField] private float timeRespawn = 2;   
     private SpawnScript[] spawnScripts;
+    private bool isDay;
     private GameObject[] respawns;
     private GameObject sun;
     private bool hasSun; 
@@ -31,9 +32,8 @@ public class SpawnManager : MonoBehaviour
     void Update(){
         //Associa os respawn a noite, se o sol estiver desativo
         //os respawn ficam ativos: 
-        
-        // hasSun = sun.activeSelf;
-        // active = !hasSun;
+        isDay = DayController.dayController.isDay;        
+        active = !isDay;
 
         SetActiveRespawn(active);        
    }

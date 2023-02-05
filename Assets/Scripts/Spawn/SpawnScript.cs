@@ -53,9 +53,9 @@ public class SpawnScript : MonoBehaviour
         for (int i = 0; i < n; i++)
         {
             GameObject oneEnemy = Instantiate(enemyPrefab, 
-                    gameObject.transform.position, 
+                    transform.position, 
                     Quaternion.identity);
-            
+                    
             oneEnemy.SetActive(false);
             enemies.Add((GameObject)oneEnemy);
         }
