@@ -17,6 +17,8 @@ public class SlotResource : MonoBehaviour
 
     private TMP_Text textAmount;
     private Image imageIcon;
+    
+    public Button button;
 
     
     #endregion
@@ -27,6 +29,30 @@ public class SlotResource : MonoBehaviour
         imageIcon = transform.GetChild(1).GetComponent<Image>();
         type = -1;
         UpdateUI();
+        
+        button = GetComponent<Button>();
+        Button btn = button.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);
+    }
+
+    private void TaskOnClick()
+    {
+        if(!Container.container.isOpen)
+        {
+            if (type == 2)
+            {
+                PlayerStatus.playerObj.GetComponent<PlayerLife>().Heal(10);
+                CurrentResource--;
+                UpdateUI();
+            }
+
+            if (type == 3)
+            {
+                PlayerStatus.playerObj.GetComponent<PlayerLife>().Heal(5);
+                CurrentResource--;
+                UpdateUI();
+            }
+        }
     }
 
     public void SlotReset()
@@ -53,4 +79,6 @@ public class SlotResource : MonoBehaviour
     {
         imageIcon.sprite = newSprite;
     }
+    
+    
 }

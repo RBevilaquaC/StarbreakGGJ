@@ -17,10 +17,10 @@ public class LifeSystem : MonoBehaviour
         currentLife = maxLife;
     }
 
-    protected virtual void Heal(int healAmount)
+    public virtual void Heal(int healAmount)
     {
         currentLife += healAmount;
-        currentLife %= maxLife;
+        if(currentLife>maxLife) currentLife = maxLife;
     }
 
     protected virtual void Death()

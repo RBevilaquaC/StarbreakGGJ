@@ -10,6 +10,7 @@ public class PlayerStatus : MonoBehaviour
     public static GameObject playerObj;
     public static PlayerStatus status;
     private Animator anim;
+    [HideInInspector] public bool isAttacking;
     
     [Header("Moviment Settings")] 
     [SerializeField] private float movimentSpeed;
@@ -32,9 +33,22 @@ public class PlayerStatus : MonoBehaviour
     {
         return rotateModifier;
     }
+    
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        
+    }
+    
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        
+    }
 
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
+    
 }

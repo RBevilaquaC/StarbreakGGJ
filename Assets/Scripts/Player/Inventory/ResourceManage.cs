@@ -228,11 +228,14 @@ public class ResourceManage : MonoBehaviour
 
     public void TransferResource(SlotResource slot)
     {
-        int slotResource = slot.CurrentResource;
-        int remainResource = Container.container.ReceiveTransferResource(slot.type,slot.CurrentResource);
-        inventoryList[slot.type] -= (slotResource - remainResource) ;
-        if (remainResource > 0) slot.CurrentResource = remainResource;
-        else slot.SlotReset();
+        if(Container.container.isOpen)
+        {
+            int slotResource = slot.CurrentResource;
+            int remainResource = Container.container.ReceiveTransferResource(slot.type, slot.CurrentResource);
+            inventoryList[slot.type] -= (slotResource - remainResource);
+            if (remainResource > 0) slot.CurrentResource = remainResource;
+            else slot.SlotReset();
+        }
     }
 
     public void CloseInventory()
