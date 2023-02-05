@@ -24,6 +24,10 @@ public class DayController : MonoBehaviour
     private void Awake()
     {
         dayController = this;
+    }
+
+    private void Start()
+    {
         light = GetComponent<Light2D>();
         light.intensity = 0;
         isDay = true;
@@ -35,6 +39,8 @@ public class DayController : MonoBehaviour
     private void Update()
     {
         if(isDay){
+            if(currentTime > 10f) 
+                PlayerStatus.playerObj.transform.GetChild(1).gameObject.SetActive(false);
             if (currentTime < 10f)
             {
                 light.intensity += Time.deltaTime / 10;
@@ -65,7 +71,6 @@ public class DayController : MonoBehaviour
             currentTime = 0;
             dayCount++;
             transform.position = startPos;
-            PlayerStatus.playerObj.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 }
