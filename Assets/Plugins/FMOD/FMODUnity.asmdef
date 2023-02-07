@@ -3,9 +3,7 @@
     "references": [
         "Unity.Timeline",
         "Unity.Addressables",
-        "Unity.ResourceManager",
-        "UnityEditor.UI",
-        "UnityEngine.UI"
+        "Unity.ResourceManager"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
