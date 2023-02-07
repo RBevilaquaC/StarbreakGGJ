@@ -8,40 +8,14 @@ using UnityEngine.Serialization;
 
 public class Mushdoom : MonoBehaviour
 {
-     private int mushdoomDamage = 1;
-     private float poisonDuration = 12;
-     private float poisonInterval = 3;
+    private int mushdoomDamage = 1;
+    private float poisonDuration = 12;
+    private float poisonInterval = 3;
     [SerializeField] private bool inTheFog;
     private PlayerLife player;
     private bool damageAgain;
     private bool isTouching;
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //player = PlayerStatus.playerObj.GetComponent<PlayerLife>();
-    }
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    /*private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.GetComponent<PlayerLife>() != null)
-        {
-            col.GetComponent<PlayerLife>().bePoisoned(poisonDamage, poisonDuration);
-            //InvokeRepeating();
-            //Invoke("DamagePlayer", 2);
-            //StartCoroutine(AwaitforDamage());
-            //col.GetComponent<PlayerLife>().bePoisoned(poisonDamage, poisonDuration);
-        }
-    }*/
 
     private void OnCollisionEnter2D(Collision2D col)
     {

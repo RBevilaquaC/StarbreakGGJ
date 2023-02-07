@@ -1,62 +1,93 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
- 
-    [SerializeField] private bool active;
-    [SerializeField] private int limitActiveEnemies;
-    [SerializeField] private float timeRespawn = 2;   
-    private SpawnScript[] spawnScripts;
-    private GameObject[] respawns;
-    private GameObject sun;
-    private bool hasSun; 
+    #region Parameters
 
-    void Awake() {
-        // Get Objects
-        spawnScripts = FindObjectsOfType(typeof(SpawnScript)) as SpawnScript[];
-        sun = GameObject.Find("Sun");
-        respawns = GameObject.FindGameObjectsWithTag("Respawn");
+    public static SpawnManager spawnManager;
+    
+    [Header("Enemy Setting")]
+    [SerializeField] private GameObject[] spawnableObjs;
+    [SerializeField] private float[] enemiesSpawnChance;
+    [SerializeField] private int[] sizeEachPool;
+    [SerializeField] private float[] dayMultiplayer;
 
-        // Configuração inicial spawns
-        foreach (var spawnScript in spawnScripts)
-        {
-            spawnScript.SetTimeRespawn(timeRespawn);
-            spawnScript.AddEnemyToList(limitActiveEnemies);    
-        }
-        SetActiveRespawn(active);        
+    private int currentResourceIndex = 0;
+
+    #endregion
+
+    private void Awake()
+    {
+        spawnManager = this;
     }
 
-    void Update(){
-        //Associa os respawn a noite, se o sol estiver desativo
-        //os respawn ficam ativos: 
-        
-        // hasSun = sun.activeSelf;
-        // active = !hasSun;
+    private void Start()
+    {
+        HandleInput();
+        FillPools();
+    }
 
-        SetActiveRespawn(active);        
-   }
-
-    void SetActiveRespawn(bool b){
-        foreach (var respawn in respawns)
+    public void SpawnEnemies()
+    {
+        for(int i = 1; i < spawnableObjs.Length; i++)
+        for (int j = 0;
+             j < DayController.dayController.dayCount * dayMultiplayer[i] && j < transform.GetChild(i).childCount;
+             j++)
+        {
+            GameObject enemy = transform.GetChild(i).GetChild(j).gameObject;
+            enemy.SetActive(true);
+            enemy.GetComponent<EnemyLife>().Respawn();
+        }
+    }
+    
+    private void FillPools()
+    {
+        for (int j = 0; j < spawnableObjs.Length ; j++)
+        {
+            GameObject parent = new GameObject();
+            parent.transform.parent = gameObject.transform;
+            parent.name = spawnableObjs[j].name + "Pool";
+            for(int i = 0; i < sizeEachPool[j]; i++)
             {
-                respawn.SetActive(b);
+                GameObject newEnemy = Instantiate(spawnableObjs[j], parent.transform);
+                newEnemy.SetActive(false);
             }
-    }
-
-    public void SetTimeRespawn(){
-        foreach (var spawnScript in spawnScripts)
-        {
-            spawnScript.SetTimeRespawn(timeRespawn);
         }
     }
 
-    public void AddEnemyToList(){
-        foreach (var spawnScript in spawnScripts)
+    public GameObject DeliveryResource()
+    {
+        currentResourceIndex++;
+        if(currentResourceIndex >= transform.GetChild(0).childCount)
         {
-            spawnScript.AddEnemyToList(limitActiveEnemies);
+            currentResourceIndex = 0;
+            return transform.GetChild(0).GetChild(transform.GetChild(0).childCount - 1).gameObject;
         }
+        return transform.GetChild(0).GetChild(currentResourceIndex - 1).gameObject;
     }
 
+    private void HandleInput()
+    {
+        if (enemiesSpawnChance.Length < spawnableObjs.Length)
+        {
+            float[] aux = new float[spawnableObjs.Length];
+            for (int i = 0; i < enemiesSpawnChance.Length; i++) aux[i] = enemiesSpawnChance[i];
+            enemiesSpawnChance = new float[spawnableObjs.Length];
+            for (int i = 0; i < enemiesSpawnChance.Length; i++) enemiesSpawnChance[i] = aux[i];
+        }
+        if (sizeEachPool.Length < spawnableObjs.Length)
+        {
+            int[] aux = new int[spawnableObjs.Length];
+            for (int i = 0; i < aux.Length; i++) aux[i] = 1;
+            for (int i = 0; i < sizeEachPool.Length; i++) aux[i] = sizeEachPool[i];
+            sizeEachPool = new int[spawnableObjs.Length];
+            for (int i = 0; i < sizeEachPool.Length; i++) sizeEachPool[i] = aux[i];
+        }
+    }
 }
