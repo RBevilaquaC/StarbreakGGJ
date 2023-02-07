@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4981422528495889997}
   - component: {fileID: 4981422528495889986}
   - component: {fileID: 801105090852160846}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4981422529535372405}
   - component: {fileID: 4981422529535372394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ MonoBehaviour:
   - {x: -5.4887767, y: 0.48066878, z: 0}
   m_ShapePathHash: 764231619
   m_Mesh: {fileID: 0}
-  m_InstanceId: 64292
+  m_InstanceId: 128030
 --- !u!1 &4981422529744366629
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 4981422529744366616}
   - component: {fileID: 4981422529744366619}
   - component: {fileID: 7685803340277550204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mobile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 4981422529786470894}
   - component: {fileID: 4981422529786470882}
   - component: {fileID: 4981422529786470883}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RoomDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5000001, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 64314
+  m_InstanceId: 128052
 --- !u!257 &4981422529786470883
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -605,7 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4981422529794078598}
   - component: {fileID: 4981422529794078599}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 4981422530036133414}
   - component: {fileID: 4981422530036133409}
   - component: {fileID: 4981422530036133408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,7 +860,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5000001, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 64338
+  m_InstanceId: 128076
 --- !u!257 &4981422530036133408
 TargetJoint2D:
   m_ObjectHideFlags: 0

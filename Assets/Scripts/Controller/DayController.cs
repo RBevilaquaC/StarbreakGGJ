@@ -46,6 +46,7 @@ public class DayController : MonoBehaviour
             }
             else if (currentTime > dayDuration - 10f)
             {
+                PlayerStatus.playerObj.transform.GetChild(1).gameObject.SetActive(true);
                 light.intensity -= Time.deltaTime / 10;
             }
         }
