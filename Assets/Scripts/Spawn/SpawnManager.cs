@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour
 
     public static SpawnManager spawnManager;
     
-    [Header("Enemy Setting")]
+    [Header("Spawnable Setting")]
     [SerializeField] private GameObject[] spawnableObjs;
     [SerializeField] private float[] enemiesSpawnChance;
     [SerializeField] private int[] sizeEachPool;
