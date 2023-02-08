@@ -36,13 +36,15 @@ public class SpawnManager : MonoBehaviour
     public void SpawnEnemies()
     {
         for(int i = 1; i < spawnableObjs.Length; i++)
-        for (int j = 0;
-             j < DayController.dayController.dayCount * dayMultiplayer[i] && j < transform.GetChild(i).childCount;
-             j++)
         {
-            GameObject enemy = transform.GetChild(i).GetChild(j).gameObject;
-            enemy.SetActive(true);
-            enemy.GetComponent<EnemyLife>().Respawn();
+            for (int j = 0;
+                 j < DayController.dayController.dayCount * dayMultiplayer[i] && j < transform.GetChild(i).childCount;
+                 j++)
+            {
+                GameObject enemy = transform.GetChild(i).GetChild(j).gameObject;
+                enemy.SetActive(true);
+                enemy.GetComponent<EnemyLife>().Respawn();
+            }
         }
     }
     

@@ -20,7 +20,7 @@ public class EnemyLife : LifeSystem
             gameObject.SetActive(true);
             Vector3 playerPos = PlayerStatus.playerObj.transform.position;
             transform.position =  playerPos +
-                                  (new Vector3(Random.Range(-50, 50), Random.Range(-50, 50), 0).normalized)*20;
+                                  (new Vector3(Random.Range(-50, 50), Random.Range(-50, 50), 0).normalized)*40;
 
             currentLife = maxLife;
         }
