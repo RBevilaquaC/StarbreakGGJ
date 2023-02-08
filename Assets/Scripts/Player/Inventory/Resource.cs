@@ -16,13 +16,17 @@ public class Resource : MonoBehaviour
     
     #endregion
 
+    private void Awake()
+    {
+        imageIcon = GetComponent<SpriteRenderer>();
+        textAmount = transform.GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>();
+    }
+
     private void Start()
     {
         if (type >= ResourceManage.resourceManage.GetResourceVarietyAmount()) type = 0;
         
-        imageIcon = GetComponent<SpriteRenderer>();
         imageIcon.sprite = ResourceManage.resourceManage.GetResourceSprite(type);
-        textAmount = transform.GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>();
         UpdateUI();
     }
 
@@ -43,5 +47,13 @@ public class Resource : MonoBehaviour
         {
             ResourceManage.resourceManage.AddResource(type, amount, this);
         }
+    }
+    
+    public void SetValues(int newType, int newAmount)
+    {
+        type = newType;
+        amount = newAmount;
+        imageIcon.sprite = ResourceManage.resourceManage.GetResourceSprite(type);
+        UpdateUI();
     }
 }

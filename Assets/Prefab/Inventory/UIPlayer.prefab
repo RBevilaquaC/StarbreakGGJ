@@ -928,8 +928,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceSprite:
-  - {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
-  - {fileID: 21300000, guid: f618c5fe13b18994aa5aee8b97d8dca1, type: 3}
+  - {fileID: -1699222647, guid: a834cfb958dbaa14dad17ab9cc6db789, type: 3}
+  - {fileID: 714387699, guid: 5292d497e4d992b458494c6a3a556192, type: 3}
+  - {fileID: -9553141, guid: d6219ea7fdd35614b8fa610442d03051, type: 3}
+  - {fileID: -2061491391, guid: f77be238bef1b054280e2b612f04c48d, type: 3}
   canvas: {fileID: 6321540519342193164}
   maxResource: 30
 --- !u!114 &6321540521410257912
