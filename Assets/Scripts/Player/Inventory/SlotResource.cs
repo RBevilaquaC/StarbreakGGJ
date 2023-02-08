@@ -44,6 +44,7 @@ public class SlotResource : MonoBehaviour
                 PlayerStatus.playerObj.GetComponent<PlayerLife>().Heal(10);
                 CurrentResource--;
                 UpdateUI();
+                if(CurrentResource == 0) SlotReset();
             }
 
             if (type == 3)
@@ -51,6 +52,7 @@ public class SlotResource : MonoBehaviour
                 PlayerStatus.playerObj.GetComponent<PlayerLife>().Heal(5);
                 CurrentResource--;
                 UpdateUI();
+                if(CurrentResource == 0) SlotReset();
             }
         }
     }

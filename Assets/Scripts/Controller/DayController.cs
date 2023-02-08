@@ -16,7 +16,7 @@ public class DayController : MonoBehaviour
     private float currentTime;
     public static DayController dayController;
     private Light2D light;
-    public int dayCount;
+    public int dayCount = 1;
     public bool isDay;
 
     #endregion
@@ -63,6 +63,7 @@ public class DayController : MonoBehaviour
             currentTime = 0;
             transform.position = startPos;
             PlayerStatus.playerObj.transform.GetChild(1).gameObject.SetActive(true);
+            SpawnManager.spawnManager.SpawnEnemies();
         }
         else
         {

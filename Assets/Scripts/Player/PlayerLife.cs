@@ -82,7 +82,6 @@ public class PlayerLife : LifeSystem
         {
             yield return new WaitForSeconds(poisonIntervalDamage);
             pl.TakeDamage(1);
-            print(PoisonDamage.ToString());
             --t;
         }
         isPoisoned = false;
