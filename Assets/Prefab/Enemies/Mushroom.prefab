@@ -5093,10 +5093,10 @@ MonoBehaviour:
       Data2: 1281257710
       Data3: -555893058
       Data4: -1458442999
-    Path: event:/Music/EnemyIdle
+    Path: event:/SFX/EnemyIdle
   Event: 
   PlayEvent: 11
-  StopEvent: 2
+  StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
