@@ -15,7 +15,6 @@ public class SoundController : MonoBehaviour
         Debug.Log("Dia Começou");
         nightMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         dayMusic.start();
-        dayMusic.release();
         //RuntimeManager.PlayOneShot("event:/Music/DuringDaySong");
     }
     // Start is called before the first frame update
@@ -33,7 +32,6 @@ public class SoundController : MonoBehaviour
         Debug.Log("A noite começou");
         //var nightMusic = RuntimeManager.CreateInstance("event:/Music/DuringNightSong");
         nightMusic.start();
-        nightMusic.release();
         //RuntimeManager.PlayOneShot("event:/Music/DuringNightSong");
 
     }
