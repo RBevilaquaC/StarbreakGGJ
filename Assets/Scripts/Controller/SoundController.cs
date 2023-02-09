@@ -8,6 +8,7 @@ public class SoundController : MonoBehaviour
 {
     private EventInstance dayMusic;
     private EventInstance nightMusic;
+    private EventInstance ambientMusic;
     
 
     private void PlayMorningSong()
@@ -22,6 +23,8 @@ public class SoundController : MonoBehaviour
     {
         dayMusic = RuntimeManager.CreateInstance("event:/Music/DuringDaySong");
         nightMusic = RuntimeManager.CreateInstance("event:/Music/DuringNightSong");
+        ambientMusic = RuntimeManager.CreateInstance("event:/Music/AmbientMusic");
+        //ambientMusic.setParameterByName("ParameterName", isDay);
         DayController.dayComes += PlayMorningSong;
         DayController.nightArrive += PlayNightSong;
     }
