@@ -11,6 +11,7 @@ public class SpawnManager : MonoBehaviour
     #region Parameters
 
     public static SpawnManager spawnManager;
+    public static Transform parentSpawner;
     
     [Header("Spawnable Setting")]
     [SerializeField] private GameObject[] spawnableObjs;
@@ -24,6 +25,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
+        parentSpawner = transform;
         spawnManager = this;
     }
 

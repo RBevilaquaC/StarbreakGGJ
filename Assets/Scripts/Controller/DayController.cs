@@ -10,7 +10,7 @@ public class DayController : MonoBehaviour
     #region Parameters
 
     [SerializeField] private Vector3 startPos;
-    [SerializeField] private Vector3 endPos;
+    [SerializeField] public Vector3 endPos;
     [Range(30,600)]
     [SerializeField]private float dayDuration;
     private float currentTime;
