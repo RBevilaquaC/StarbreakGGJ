@@ -34,6 +34,7 @@ public class DayController : MonoBehaviour
 
     private void Start()
     {
+        dayComes?.Invoke();
         light = GetComponent<Light2D>();
         light.intensity = 0;
         isDay = true;

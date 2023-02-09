@@ -12,8 +12,10 @@ public class SoundController : MonoBehaviour
 
     private void PlayMorningSong()
     {
-        dayMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        Debug.Log("Dia Começou");
+        nightMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         dayMusic.start();
+        dayMusic.release();
         //RuntimeManager.PlayOneShot("event:/Music/DuringDaySong");
     }
     // Start is called before the first frame update
@@ -27,9 +29,11 @@ public class SoundController : MonoBehaviour
 
     private void PlayNightSong()
     {
-        nightMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        dayMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        Debug.Log("A noite começou");
         //var nightMusic = RuntimeManager.CreateInstance("event:/Music/DuringNightSong");
         nightMusic.start();
+        nightMusic.release();
         //RuntimeManager.PlayOneShot("event:/Music/DuringNightSong");
 
     }
