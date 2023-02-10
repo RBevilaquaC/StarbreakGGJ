@@ -203,7 +203,7 @@ public class ResourceManage : MonoBehaviour
     public int ResourceDelivery(int type, int resourceAmount)
     {
         if (inventoryList[type] < resourceAmount) return 0;
-        for (int i = slotsResource.Length; i > 0; i--)
+        for (int i = slotsResource.Length - 1; i >= 0; i--)
         {
             if (slotsResource[i].type == type)
             {
@@ -262,6 +262,11 @@ public class ResourceManage : MonoBehaviour
     public int GetMaxStackResource()
     {
         return maxResource;
+    }
+
+    public int[] GetInventoryList()
+    {
+        return inventoryList;
     }
     
     public void SortInventory()

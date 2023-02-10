@@ -10,7 +10,7 @@ public class DayController : MonoBehaviour
     #region Parameters
 
     [SerializeField] private Vector3 startPos;
-    [SerializeField] private Vector3 endPos;
+    [SerializeField] public Vector3 endPos;
     [Range(30,600)]
     [SerializeField]private float dayDuration;
     private float currentTime;
@@ -18,12 +18,6 @@ public class DayController : MonoBehaviour
     private Light2D light;
     public int dayCount = 1;
     public bool isDay;
-    public delegate void DayEvent();
-
-    public delegate void NightEvent();
-
-    public static event DayEvent dayComes;
-    public static event NightEvent nightArrive;
 
     #endregion
 
@@ -34,7 +28,6 @@ public class DayController : MonoBehaviour
 
     private void Start()
     {
-        dayComes?.Invoke();
         light = GetComponent<Light2D>();
         light.intensity = 0;
         isDay = true;
@@ -65,9 +58,6 @@ public class DayController : MonoBehaviour
     {
         if (isDay)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isDay", 1);
-            Debug.Log("Chegou Dia");
-            nightArrive?.Invoke();
             isDay = false;
             light.intensity = 0;
             currentTime = 0;
@@ -77,19 +67,11 @@ public class DayController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Chegou Noite");
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isDay", 0);
-            dayComes?.Invoke();
             isDay = true;
             light.intensity = 0;
             currentTime = 0;
             dayCount++;
             transform.position = startPos;
         }
-    }
-
-    IEnumerator DayRoutine()
-    {
-        yield return new WaitForSeconds(1f);
     }
 }
