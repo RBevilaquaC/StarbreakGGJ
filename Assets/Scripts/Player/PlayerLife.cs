@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using FMODUnity;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -47,7 +46,6 @@ public class PlayerLife : LifeSystem
 
     public override void TakeDamage(int damageAmount)
     {
-        RuntimeManager.PlayOneShot("event:/SFX/PlayerHurt");
         currentLife -= damageAmount;
         if (currentLife <= 0)
         {

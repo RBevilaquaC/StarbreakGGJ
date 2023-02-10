@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4917863852245558268}
   - component: {fileID: 1134116213992526161}
   - component: {fileID: 8229791008747305071}
-  - component: {fileID: -911696778894391491}
   - component: {fileID: -2450076780311266154}
+  - component: {fileID: 625898645285588288}
   m_Layer: 3
-  m_Name: Arrow
+  m_Name: Dart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,19 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-911696778894391491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2429716325389154786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07eca1dc350c7a469f4c480a6f91da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAttack: 2
 --- !u!61 &-2450076780311266154
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.062191904, y: 0.07107639}
+  m_Offset: {x: 0.062191904, y: 5.8973465}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -145,5 +132,18 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7963895, y: 19.174173}
+  m_Size: {x: 1.7963895, y: 4.3378224}
   m_EdgeRadius: 0
+--- !u!114 &625898645285588288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2429716325389154786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4855947b6bd652a45aef41af9fd35101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
