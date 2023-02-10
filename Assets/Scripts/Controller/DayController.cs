@@ -18,6 +18,12 @@ public class DayController : MonoBehaviour
     private Light2D light;
     public int dayCount = 1;
     public bool isDay;
+    public delegate void DayEvent();
+
+    public delegate void NightEvent();
+
+    public static event DayEvent dayComes;
+    public static event NightEvent nightArrive;
 
     #endregion
 
@@ -58,6 +64,8 @@ public class DayController : MonoBehaviour
     {
         if (isDay)
         {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isDay", 1);
+            nightArrive?.Invoke();
             isDay = false;
             light.intensity = 0;
             currentTime = 0;
@@ -67,6 +75,8 @@ public class DayController : MonoBehaviour
         }
         else
         {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isDay", 0);
+            dayComes?.Invoke();
             isDay = true;
             light.intensity = 0;
             currentTime = 0;

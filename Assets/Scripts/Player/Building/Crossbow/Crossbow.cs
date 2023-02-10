@@ -80,7 +80,7 @@ public class Crossbow : MonoBehaviour
         bullet.transform.rotation = components.rotation;
         float angle = components.rotation.eulerAngles.z+90;
         Vector3 dir = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad),0);
-        bullet.transform.position = transform.position + dir.normalized *1.5f;
+        bullet.transform.position = transform.position + dir.normalized * 2;
         
         bullet.SetActive(true);
         bullet.GetComponent<Rigidbody2D>().velocity = dir * speedBulletModifier;
