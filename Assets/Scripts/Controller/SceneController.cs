@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class SceneController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        RuntimeManager.StudioSystem.setParameterByName("MenuTransition", 0);
     }
 
     // Update is called once per frame

@@ -6,15 +6,15 @@ using FMODUnity;
 
 public class SoundController : MonoBehaviour
 {
-    private EventInstance dayMusic;
+    /*private EventInstance dayMusic;
     private EventInstance nightMusic;
     private EventInstance ambientMusic;
     
 
     private void PlayMorningSong()
     {
-        Debug.Log("Dia Começou");
-        nightMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        //Debug.Log("Dia Começou");
+        //nightMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         dayMusic.start();
         //RuntimeManager.PlayOneShot("event:/Music/DuringDaySong");
     }
@@ -31,8 +31,8 @@ public class SoundController : MonoBehaviour
 
     private void PlayNightSong()
     {
-        dayMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        Debug.Log("A noite começou");
+        //dayMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        //Debug.Log("A noite começou");
         //var nightMusic = RuntimeManager.CreateInstance("event:/Music/DuringNightSong");
         nightMusic.start();
         //RuntimeManager.PlayOneShot("event:/Music/DuringNightSong");
@@ -43,5 +43,5 @@ public class SoundController : MonoBehaviour
     void Update()
     {
         
-    }
+    }*/
 }
