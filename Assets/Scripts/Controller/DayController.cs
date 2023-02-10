@@ -65,6 +65,8 @@ public class DayController : MonoBehaviour
     {
         if (isDay)
         {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isDay", 1);
+            Debug.Log("Chegou Dia");
             nightArrive?.Invoke();
             isDay = false;
             light.intensity = 0;
@@ -75,6 +77,8 @@ public class DayController : MonoBehaviour
         }
         else
         {
+            Debug.Log("Chegou Noite");
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isDay", 0);
             dayComes?.Invoke();
             isDay = true;
             light.intensity = 0;
@@ -82,5 +86,10 @@ public class DayController : MonoBehaviour
             dayCount++;
             transform.position = startPos;
         }
+    }
+
+    IEnumerator DayRoutine()
+    {
+        yield return new WaitForSeconds(1f);
     }
 }
