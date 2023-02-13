@@ -35,7 +35,7 @@ public class DayController : MonoBehaviour
 
     private void Start()
     {
-
+        //dayComes?.Invoke();
         RuntimeManager.StudioSystem.setParameterByName("MenuTransition", 1);
         light = GetComponent<Light2D>();
         light.intensity = 0;
