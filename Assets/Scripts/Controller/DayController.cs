@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.XR;
@@ -34,6 +35,8 @@ public class DayController : MonoBehaviour
 
     private void Start()
     {
+
+        RuntimeManager.StudioSystem.setParameterByName("MenuTransition", 1);
         light = GetComponent<Light2D>();
         light.intensity = 0;
         isDay = true;

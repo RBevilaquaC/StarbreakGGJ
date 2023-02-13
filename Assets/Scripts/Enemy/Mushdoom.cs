@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,6 +21,7 @@ public class Mushdoom : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (!col.gameObject.CompareTag("Player")) return;
+        RuntimeManager.PlayOneShot("event:/SFX/EnemyIdle");
         Debug.Log("Bateu");
         col.gameObject.GetComponent<NavMeshAgent>().enabled = false;
     }
