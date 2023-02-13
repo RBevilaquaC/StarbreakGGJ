@@ -20,7 +20,7 @@ public class Building : MonoBehaviour
 
     private void Update()
     {
-        if (CheckResource() && Input.GetButtonDown("Action")) SpawnCrossBow();
+        if (CheckResource() && Input.GetButtonDown("Build")) SpawnCrossBow();
     }
 
     private void SpawnCrossBow()
