@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,12 @@ public class PlayerStatus : MonoBehaviour
     {
         playerObj = gameObject;
         status = this;
+    }
+
+    private void Start()
+    {
+        if(GameController.gm != null)
+            if(GameController.gm.isContinue) LoadGame();
     }
 
     public float GetMovimentSpeed()
@@ -50,5 +57,22 @@ public class PlayerStatus : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
-    
+
+    public void SaveGame()
+    {
+        SaveSystem.SaveGame();
+    }
+
+    public void LoadGame()
+    {
+        GameData data = SaveSystem.LoadGame();
+        
+        ResourceManage.resourceManage.SetInventoryList(data.playerResourceList);
+        Container.container.containerInventoryList = data.containerResourceList;
+        DayController.dayController.dayCount = data.dayCount;
+        GetComponent<PlayerLife>().SetCurrentLife(data.playerCurrentLife);
+        
+        ResourceManage.resourceManage.SortInventory();
+        Container.container.SortContainer();
+    }
 }

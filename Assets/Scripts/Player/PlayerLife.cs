@@ -103,4 +103,14 @@ public class PlayerLife : LifeSystem
             }
         }
     }
+
+    public int GetCurrentLife()
+    {
+        return currentLife;
+    }
+
+    public void SetCurrentLife(int newCurrentLife)
+    {
+        currentLife = newCurrentLife;
+    }
 }
