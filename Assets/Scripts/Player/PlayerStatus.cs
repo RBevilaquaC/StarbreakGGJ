@@ -27,7 +27,8 @@ public class PlayerStatus : MonoBehaviour
 
     private void Start()
     {
-        if(GameController.gm.isContinue) LoadGame();
+        if(GameController.gm != null)
+            if(GameController.gm.isContinue) LoadGame();
     }
 
     public float GetMovimentSpeed()
