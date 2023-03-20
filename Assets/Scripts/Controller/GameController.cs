@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameController : MonoBehaviour
@@ -11,13 +12,11 @@ public class GameController : MonoBehaviour
     #region Parameters
 
     public static GameController gm;
-    
 
     #endregion
 
     private void Start()
     {
-        
         if (GameController.gm == null)
         {
             gm = this;

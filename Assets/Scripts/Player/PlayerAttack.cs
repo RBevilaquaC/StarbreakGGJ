@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -33,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
     {
         cc.enabled = true;
         anim.Play("Attack");
+        RuntimeManager.PlayOneShot("event:/SFX/ScytheAttack");
         Invoke("DisableAttack",0.3f);
     }
 
