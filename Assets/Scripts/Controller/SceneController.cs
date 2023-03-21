@@ -10,15 +10,15 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
-    // Start is called before the first frame update
+
+    public void SetContinueState(bool state)
+    {
+        GameController.gm.isContinue = state;
+    }
+    
     void Start()
     {
         RuntimeManager.StudioSystem.setParameterByName("MenuTransition", 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

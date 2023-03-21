@@ -5,6 +5,8 @@ using FMODUnity;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
+using System.Net;
 
 
 public class GameController : MonoBehaviour
@@ -12,7 +14,7 @@ public class GameController : MonoBehaviour
     #region Parameters
 
     public static GameController gm;
-
+    public bool isContinue;
     #endregion
 
     private void Start()
@@ -26,6 +28,30 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        
+        string path = Application.persistentDataPath + "/saveRoots.star";
+        GetContinueButton().SetActive(File.Exists(path));
+        
+        SceneManager.sceneLoaded += this.OnLoadCallback;
+    }
+
+    private void OnLoadCallback(Scene scene, LoadSceneMode sceneMode)
+    {
+        if (scene.name == "Menu")
+        {
+            string path = Application.persistentDataPath + "/saveRoots.star";
+            GetContinueButton().SetActive(File.Exists(path));
+        }
+    }
+
+    public void SetIsContinue(bool state)
+    {
+        isContinue = state;
+    }
+    private GameObject GetContinueButton()
+    {
+        return MenuBottons.buttons.GetChild(0).gameObject;
     }
 
     public void PauseGame()

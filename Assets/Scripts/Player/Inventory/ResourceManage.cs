@@ -268,6 +268,11 @@ public class ResourceManage : MonoBehaviour
     {
         return inventoryList;
     }
+
+    public void SetInventoryList(int[] newInventory)
+    {
+        inventoryList = newInventory;
+    }
     
     public void SortInventory()
     {
