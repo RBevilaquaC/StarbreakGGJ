@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
+
 
 public class SetVCAVolume : MonoBehaviour
 {
@@ -11,10 +13,12 @@ public class SetVCAVolume : MonoBehaviour
 
     public string VCAName;
     
+    //private float _volume;
+    
     // Start is called before the first frame update
     void Start()
     {
-        VCAController = FMODUnity.RuntimeManager.GetVCA("vca:/" + VCAName);
+        VCAController = RuntimeManager.GetVCA("vca:/" + VCAName);
         slider = GetComponent<Slider>();
 
     }
@@ -28,5 +32,7 @@ public class SetVCAVolume : MonoBehaviour
     public void SetVolume(float volume)
     {
         VCAController.setVolume(volume);
+        //VCAController.getVolume(out _volume);
+        //slider.value = _volume;
     }
 }

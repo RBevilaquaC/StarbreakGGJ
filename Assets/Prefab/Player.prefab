@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d23645aac5e5f14e9dfeb1f46552837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 910
+  maxLife: 20
   lifeBar: {fileID: 0}
   gameOverPanel: {fileID: 0}
   PlayerParticles:
